@@ -1,11 +1,10 @@
-import { useState } from "react";
-import mockdata from "../mockdata";
-import ItemBox from "./components/ItemBox";
+import { useState } from "react"
+import mockdata from "../mockdata"
+import ItemBox from "./components/ItemBox"
 function App() {
-    const data = mockdata
     const selectedData = mockdata.animeList.slice(0, 16)
     const [pickedItems, setPickedItems] = useState([])
-    console.log(pickedItems)
+
     return (
         <div className='grid place-items-center min-h-screen bg-gray-900'>
             <div className='bg-purple-950 rounded-lg p-2 text-white grid place-items-center gap-4'>
@@ -19,7 +18,12 @@ function App() {
                     {
                         selectedData.map((item, i) => {
                             return (
-                                <ItemBox key={i} item={item} pickedItems={pickedItems} setPickedItems={setPickedItems} items={selectedData}/>
+                                <ItemBox 
+                                    key={i} 
+                                    item={item} 
+                                    pickedItems={pickedItems} 
+                                    setPickedItems={setPickedItems} 
+                                    items={selectedData}/>
                             );
                         })
                     }
@@ -33,4 +37,4 @@ function App() {
     );
 }
 
-export default App;
+export default App
