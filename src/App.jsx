@@ -1,72 +1,129 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import MOCKDATA from "../mockdata"
 import ItemBox from "./components/ItemBox"
 import UTILS from "./utils"
+import AttemptsLeft from "./components/AttemptsLeft"
+import EndGame from "./components/EndGame"
 function App() {
     const selectedData = MOCKDATA.animeList.slice(0, 16)
     const answers = MOCKDATA.answers
+
+    const [items, setItems] = useState(selectedData)
     const [pickedItems, setPickedItems] = useState([])
     const [allItemsPicked, setAllItemsPicked] = useState(true)
-    
+    const [correctGuesses, setCorrectGuesses] = useState([])
+    const [wrongAnswer, setWrongAnswer] = useState()
+    const [livesLeft, setLivesLeft] = useState(5)
+
+    const extractItems = () => {
+        const reducedItems = items.filter(item => 
+            !pickedItems.some(pickedItem => JSON.stringify(item) === JSON.stringify(pickedItem))
+        )
+        setItems(reducedItems)
+    }
+
     const guessAnswers = () => {
         if (pickedItems.length !== 4) {
             setAllItemsPicked(false)
             return 
         }
 
-        if (UTILS.answerIsCorrect(pickedItems, answers[0])) {
-            console.log('Answer IS correct')
+        let isCorrect = false
+
+        answers.map((answer) => {
+            if (UTILS.verifyAnswers(pickedItems, answer.answer)) {
+                isCorrect= true
+                setCorrectGuesses([...correctGuesses, answer])
+                extractItems()
+                if(correctGuesses.length === 4){
+                    setWinGame(true)
+                }
+            }
+        })
+
+        if(!isCorrect){
+            setWrongAnswer(true)
+            setLivesLeft(prev => prev - 1)
         } else {
-            console.log('Incorrect Answer')
-            clearPicks()
+            setWrongAnswer(false)
         }
     }
+    
 
     const clearPicks = () => {
         setPickedItems([])
     }
 
+    const restartGame = () => {
+        setLivesLeft(5)
+        setWrongAnswer(false)
+        setCorrectGuesses([])
+        setItems(selectedData)
+        clearPicks()
+    }
+
     return (
         <div className='grid place-items-center min-h-screen bg-gray-900'>
-            <div className='bg-purple-950 rounded-lg p-2 text-white grid place-items-center gap-4'>
-                <span className='font-bold text-2xl'>Missed Connections</span>
+            <div className='bg-purple-950 sm:max-w-md sm:text-xl rounded-lg p-2 text-white grid place-items-center gap-4'>
+                <span className='font-bold text-3xl'>Missed Connections</span>
                 {!allItemsPicked 
-                    ? <span className='font-normal text-lg'>You have to pick 4 items</span>
+                    ? <span className='text-red-600 font-bold text-lg'>You have to pick 4 items</span>
                     : ''
                 }
-                <div className='grid grid-cols-4 grid-rows-4 gap-2'>
-                    {
-                        selectedData.map((item, i) => {
-                            return (
-                                <ItemBox 
-                                    key={i} 
-                                    item={item} 
-                                    pickedItems={pickedItems} 
-                                    setPickedItems={setPickedItems} 
-                                    items={selectedData}
-                                    setAllItemsPicked= {setAllItemsPicked}
-                                />
-                            );
-                        })
-                    }
-                </div>
-                <div className='flex justify-between w-full'>
-                    <button 
-                    className='bg-red-700 px-8 py-2 rounded-xl'
-                    onClick={clearPicks}
-                    >
-                        Clear
-                    </button>
-                    <button 
-                    className='bg-lime-700 px-8 py-2 rounded-xl'
-                    onClick={guessAnswers}
-                    >
-                        Send
-                    </button>
-                </div>
+
+                {livesLeft < 1 ? <EndGame result='loss' restartGame={restartGame}/>: 
+                    correctGuesses.length === 4 ? <EndGame result='win' restartGame={restartGame}/> :
+                    <>
+                        {wrongAnswer ? <span className='text-red-600 font-bold text-lg'>Wrong answer</span>: ''}
+                        <div className='grid grid-cols-4 grid-rows-4 gap-2'>
+                            {correctGuesses.length === 0 ? '' :
+                                correctGuesses.map((correctGuess, key)=>{
+                                    return (
+                                        <div 
+                                            className='bg-green-700 font-medium text-xl rounded-lg p-2 col-span-4 text-center grid place-items-center'
+                                            key={key}
+                                        >
+                                            <span>{correctGuess?.name}</span>
+                                        </div>
+                                    )
+                                })
+                            }
+                            {
+                                items.map((item, i) => {
+                                    return (
+                                        <ItemBox 
+                                            key={i} 
+                                            item={item} 
+                                            pickedItems={pickedItems} 
+                                            setPickedItems={setPickedItems} 
+                                            setAllItemsPicked= {setAllItemsPicked}
+                                        />
+                                    );
+                                })
+                            }
+                        </div>
+                        <div className={`${livesLeft<1 ? '': 'min-w-28'}`}>
+                            <AttemptsLeft livesLeft={livesLeft}/>
+                        </div>
+                        <div className='flex justify-between w-full'>
+                            <button 
+                                className='bg-red-700 hover:bg-red-600 px-8 py-2 rounded-xl'
+                                onClick={clearPicks}
+                            >
+                                Clear
+                            </button>
+                            <button 
+                                className='bg-lime-700 hover:bg-lime-600 px-8 py-2 rounded-xl'
+                                onClick={guessAnswers}
+                            >
+                                Send
+                            </button>
+                        </div>
+                    </> 
+                }
             </div>
         </div>
-    );
+    )
 }
 
 export default App

@@ -30,7 +30,7 @@ const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked}) => {
 
     return (
         <button
-        className= {` rounded-lg p-1 aspect-square text-center grid place-items-center  duration-100 ${isSelected ? 'bg-lime-700 hover:bg-lime-500' : 'bg-purple-700 hover:bg-purple-500'}`}
+        className= {`text-xs rounded-lg p-1 aspect-square text-center grid place-items-center  duration-100 ${isSelected ? 'bg-lime-700 hover:bg-lime-500' : 'bg-purple-700 hover:bg-purple-500'}`}
         onClick={handleOnClick}
         >
             {item.name}

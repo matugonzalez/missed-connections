@@ -1,4 +1,4 @@
-const answerIsCorrect = (pickedITems, answers) => {
+const verifyAnswers = (pickedITems, answers) => {
     let a = 0
     pickedITems.map((item) => {
         answers.map((answer) => {
@@ -12,7 +12,7 @@ const answerIsCorrect = (pickedITems, answers) => {
 }
 
 const UTILS = {
-    answerIsCorrect,
+    verifyAnswers,
 }
 
 export default UTILS
