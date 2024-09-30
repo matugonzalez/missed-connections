@@ -7,3 +7,4 @@ the game has two difficulties:
 1. Easy: you have unlimited tries to find groups.
 2. Hard: you ONLY have 5 tries to find groups.
 
+[What i Learned](WhatILearned.md)
