@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const ItemBox = ({item, pickedItems, setPickedItems}) => {
+const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked}) => {
     const [isSelected, setIsSelected] = useState(false)
 
     const isThereSpace = () => pickedItems.length < 4
@@ -25,6 +25,7 @@ const ItemBox = ({item, pickedItems, setPickedItems}) => {
 
     useEffect(() => {
         setIsSelected(isPicked)
+        setAllItemsPicked(true)
     }, [pickedItems, item])
 
     return (
