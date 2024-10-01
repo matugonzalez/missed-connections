@@ -1,19 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MOCKDATA from "../mockdata"
 import ItemBox from "./components/ItemBox"
 import UTILS from "./utils"
 import AttemptsLeft from "./components/AttemptsLeft"
 import EndGame from "./components/EndGame"
+import CorrectGuesses from "./components/CorrectGuesses"
 function App() {
     const selectedData = MOCKDATA.animeList.slice(0, 16)
     const answers = MOCKDATA.answers
-
+    const [colors, setColors] = useState([]) 
     const [items, setItems] = useState(selectedData)
     const [pickedItems, setPickedItems] = useState([])
     const [allItemsPicked, setAllItemsPicked] = useState(true)
     const [correctGuesses, setCorrectGuesses] = useState([])
     const [wrongAnswer, setWrongAnswer] = useState()
     const [livesLeft, setLivesLeft] = useState(5)
+
+    useEffect(() => {
+        setColors(UTILS.getShuffledColors())
+    }, [])
 
     const extractItems = () => {
         const reducedItems = items.filter(item => 
@@ -67,27 +72,16 @@ function App() {
             <div className='bg-purple-950 sm:max-w-md sm:text-xl rounded-lg p-2 text-white grid place-items-center gap-4'>
                 <span className='font-bold text-3xl'>Missed Connections</span>
                 {!allItemsPicked 
-                    ? <span className='text-red-600 font-bold text-lg'>You have to pick 4 items</span>
+                    ? <span className='text-red-600 font-bold text-lg animate-shake'>You have to pick 4 items</span>
                     : ''
                 }
 
                 {livesLeft < 1 ? <EndGame result='loss' restartGame={restartGame}/>: 
-                    correctGuesses.length === 4 ? <EndGame result='win' restartGame={restartGame}/> :
+                    (correctGuesses.length === 4) ? <EndGame result='win' restartGame={restartGame}/> :
                     <>
-                        {wrongAnswer ? <span className='text-red-600 font-bold text-lg'>Wrong answer</span>: ''}
+                        {wrongAnswer ? <span className='text-red-600 font-bold text-lg animate-shake'>Wrong answer</span>: ''}
                         <div className='grid grid-cols-4 grid-rows-4 gap-2'>
-                            {correctGuesses.length === 0 ? '' :
-                                correctGuesses.map((correctGuess, key)=>{
-                                    return (
-                                        <div 
-                                            className='bg-green-700 font-medium text-xl rounded-lg p-2 col-span-4 text-center grid place-items-center'
-                                            key={key}
-                                        >
-                                            <span>{correctGuess?.name}</span>
-                                        </div>
-                                    )
-                                })
-                            }
+                            <CorrectGuesses correctGuesses={correctGuesses} colors={colors}/>
                             {
                                 items.map((item, i) => {
                                     return (
@@ -97,12 +91,13 @@ function App() {
                                             pickedItems={pickedItems} 
                                             setPickedItems={setPickedItems} 
                                             setAllItemsPicked= {setAllItemsPicked}
+                                            setWrongAnswer= {setWrongAnswer}
                                         />
                                     );
                                 })
                             }
                         </div>
-                        <div className={`${livesLeft<1 ? '': 'min-w-28'}`}>
+                        <div className='flex'>
                             <AttemptsLeft livesLeft={livesLeft}/>
                         </div>
                         <div className='flex justify-between w-full'>

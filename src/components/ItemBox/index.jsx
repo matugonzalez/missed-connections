@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
-const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked}) => {
+const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked, setWrongAnswer}) => {
     const [isSelected, setIsSelected] = useState(false)
+    const [showError, setShowError] = useState(false)
 
     const isThereSpace = () => pickedItems.length < 4
     
@@ -24,13 +25,14 @@ const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked}) => {
     const isPicked = pickedItems.some(i => i === item)
 
     useEffect(() => {
+        setWrongAnswer(false)
         setIsSelected(isPicked)
         setAllItemsPicked(true)
     }, [pickedItems, item])
 
     return (
         <button
-        className= {`text-xs rounded-lg p-1 aspect-square text-center grid place-items-center  duration-100 ${isSelected ? 'bg-lime-700 hover:bg-lime-500' : 'bg-purple-700 hover:bg-purple-500'}`}
+        className= {`text-xs rounded-lg p-1 aspect-square text-center grid place-items-center  duration-100 ${isSelected ? 'bg-lime-700 hover:bg-lime-500' : 'bg-purple-700 hover:bg-purple-500'} ${showError ? 'animate-shake': ''}`}
         onClick={handleOnClick}
         >
             {item.name}

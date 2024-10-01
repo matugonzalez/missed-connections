@@ -1,13 +1,25 @@
 const AttemptsLeft = ({livesLeft}) => {
     const hearts = []
-    for(let i=0; i<livesLeft; i++){
-        hearts.push(<span key={i}>❤️</span>)
+    for(let i=1; i<livesLeft+1; i++){
+        hearts.push('❤️')
     }
+    while (hearts.length < 5) {
+        hearts.push('☠️')
+    } 
     return (
         <>
-            {!hearts 
+            {hearts === 0 
             ? <span>No lives left</span> 
-            : hearts}
+            : hearts.map((item, index) => {
+                return (
+                    <div
+                    key={index} 
+                    className={`animate-[bounce_${livesLeft < 3 ? 1 : 2}s_ease-in_infinite]`}
+                    >
+                        {item}
+                    </div>
+                )
+            })}
         </>
     )
 }
