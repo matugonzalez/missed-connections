@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import MOCKDATA from "../mockdata"
+import MOCKDATA from "../mockData"
 import ItemBox from "./components/ItemBox"
 import UTILS from "./utils"
 import AttemptsLeft from "./components/AttemptsLeft"
