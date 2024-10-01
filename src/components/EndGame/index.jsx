@@ -1,11 +1,11 @@
 const EndGame = ({result, restartGame}) => {
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center gap-4'>
             {
                 (result === 'win')
-                ? <span className='text-green-500 p-8 text-3xl font-semibold'>You win</span>
-                : <span className='text-red-500 p-8 text-3xl font-semibold'>You Lost</span>
+                ? <span className='text-green-500 text-3xl font-semibold'>You win</span>
+                : <span className='text-red-500 text-3xl font-semibold'>You Lost</span>
 
             }
 

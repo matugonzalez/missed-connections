@@ -17,7 +17,7 @@ const shuffleArray =  (array) => {
 }
 
 const getShuffledColors = () => {
-    const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
+    const colors = ['gray', 'yellow', 'green', 'blue', 'indigo', 'pink']
     const shuffledColors = shuffleArray(colors)
     shuffledColors.length = 4
     return shuffledColors

@@ -7,20 +7,20 @@ const AttemptsLeft = ({livesLeft}) => {
         hearts.push('☠️')
     } 
     return (
-        <>
+        <div className='flex'>
             {hearts === 0 
             ? <span>No lives left</span> 
             : hearts.map((item, index) => {
                 return (
                     <div
                     key={index} 
-                    className={`animate-[bounce_${livesLeft < 3 ? 1 : 2}s_ease-in_infinite]`}
+                    className={livesLeft<3?'animate-[bounce_1s_ease-in_infinite]' : 'animate-[bounce_2s_ease-in_infinite]'}
                     >
                         {item}
                     </div>
                 )
             })}
-        </>
+        </div>
     )
 }
 export default AttemptsLeft
