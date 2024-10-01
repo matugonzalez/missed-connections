@@ -11,8 +11,22 @@ const verifyAnswers = (pickedITems, answers) => {
     if (a === 4) return true
 }
 
+const shuffleArray =  (array) => {
+    let sortedArray = array.sort((a, b) => 0.5 - Math.random())
+    return sortedArray
+}
+
+const getShuffledColors = () => {
+    const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
+    const shuffledColors = shuffleArray(colors)
+    shuffledColors.length = 4
+    return shuffledColors
+}
+
 const UTILS = {
     verifyAnswers,
+    shuffleArray,
+    getShuffledColors,
 }
 
 export default UTILS
