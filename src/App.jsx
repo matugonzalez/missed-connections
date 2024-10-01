@@ -8,8 +8,7 @@ import CorrectGuesses from "./components/CorrectGuesses"
 import GameButtons from "./components/GameButtons"
 
 function App() {
-    const selectedData = MOCKDATA.animeList.slice(0, 16)
-    const answers = MOCKDATA.answers
+    const selectedData = MOCKDATA.answers.flatMap(item => item.answer)
     const [colors, setColors] = useState([]) 
     const [items, setItems] = useState(UTILS.shuffleArray(selectedData))
     const [pickedItems, setPickedItems] = useState([])
@@ -37,7 +36,7 @@ function App() {
 
         let isCorrect = false
 
-        answers.map((answer) => {
+        MOCKDATA.answers.map((answer) => {
             if (UTILS.verifyAnswers(pickedItems, answer.answer)) {
                 isCorrect= true
                 setCorrectGuesses([...correctGuesses, answer])

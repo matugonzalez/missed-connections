@@ -1,149 +1,7 @@
-const animeList = [
-    {
-        id: 1,
-        name: "Attack on Titan",
-        author: "Hajime Isayama",
-        dateOfRelease: "2013",
-        producer: "Wit Studio, MAPPA"
-    },
-    {
-        id: 2,
-        name: "My Hero Academia",
-        author: "Kohei Horikoshi",
-        dateOfRelease: "2016",
-        producer: "Bones"
-    },
-    {
-        id: 3,
-        name: "Demon Slayer",
-        author: "Koyoharu Gotouge",
-        dateOfRelease: "2019",
-        producer: "Ufotable"
-    },
-    {
-        id: 4,
-        name: "One Piece",
-        author: "Eiichiro Oda",
-        dateOfRelease: "1999",
-        producer: "Toei Animation"
-    },
-    {
-        id: 5,
-        name: "Fullmetal Alchemist: Brotherhood",
-        author: "Hiromu Arakawa",
-        dateOfRelease: "2009",
-        producer: "BONES"
-    },
-    {
-        id: 6,
-        name: "Death Note",
-        author: "Tsugumi Ohba",
-        dateOfRelease: "2006",
-        producer: "Madhouse"
-    },
-    {
-        id: 7,
-        name: "Sword Art Online",
-        author: "Reki Kawahara",
-        dateOfRelease: "2012",
-        producer: "A-1 Pictures"
-    },
-    {
-        id: 8,
-        name: "Tokyo Ghoul",
-        author: "Sui Ishida",
-        dateOfRelease: "2014",
-        producer: "Studio Pierrot"
-    },
-    {
-        id: 9,
-        name: "Hunter x Hunter",
-        author: "Yoshihiro Togashi",
-        dateOfRelease: "2011",
-        producer: "Madman Entertainment"
-    },
-    {
-        id: 10,
-        name: "Neon Genesis Evangelion",
-        author: "Hideaki Anno",
-        dateOfRelease: "1995",
-        producer: "Gainax"
-    },
-    {
-        id: 11,
-        name: "Paranoia Agent",
-        author: "Satoshi Kon",
-        dateOfRelease: "2004",
-        producer: "Madhouse"
-    },
-    {
-        id: 12,
-        name: "Your Lie in April",
-        author: "Naoshi Arakawa",
-        dateOfRelease: "2014",
-        producer: "A-1 Pictures"
-    },
-    {
-        id: 13,
-        name: "The Prince of Tennis",
-        author: "Takeshi Konomi",
-        dateOfRelease: "2001",
-        producer: "Mitsubachi"
-    },
-    {
-        id: 14,
-        name: "Mob Psycho 100",
-        author: "ONE",
-        dateOfRelease: "2016",
-        producer: "Bones"
-    },
-    {
-        id: 15,
-        name: "Gurren Lagann",
-        author: "Kazuki Nakashima",
-        dateOfRelease: "2007",
-        producer: "Gainax"
-    },
-    {
-        id: 16,
-        name: "Monster",
-        author: "Naoki Urasawa",
-        dateOfRelease: "2004",
-        producer: "Madhouse"
-    },
-    {
-        id: 17,
-        name: "Kabaneri of the Iron Fortress",
-        author: "Tachikawa Yūichirō",
-        dateOfRelease: "2016",
-        producer: "Wit Studio"
-    },
-    {
-        id: 18,
-        name: "Anohana: The Flower We Saw That Day",
-        author: "Yoshihiro Miyamoto",
-        dateOfRelease: "2011",
-        producer: "A-1 Pictures"
-    },
-    {
-        id: 19,
-        name: "One Punch Man",
-        author: "ONE",
-        dateOfRelease: "2015",
-        producer: "Madhouse"
-    },
-    {
-        id: 20,
-        name: "The Wings of Honneamise",
-        author: "Kazuki Nakashima",
-        dateOfRelease: "1987",
-        producer: "Gainax"
-    },
-];
 const answers = [
     {
-        name:'Animes released on 2013',
-        answer : [
+        name: "Animes released on 2013",
+        answer: [
             {
                 id: 1,
                 name: "Attack on Titan",
@@ -153,129 +11,129 @@ const answers = [
             },
             {
                 id: 2,
+                name: "Kill la Kill",
+                author: "Kazuki Nakashima",
+                dateOfRelease: "2013",
+                producer: "Trigger"
+            },
+            {
+                id: 3,
+                name: "The Devil Is a Part-Timer!",
+                author: "Satoshi Wagahara",
+                dateOfRelease: "2013",
+                producer: "White Fox"
+            },
+            {
+                id: 4,
+                name: "My Teen Romantic Comedy SNAFU",
+                author: "Wataru Watari",
+                dateOfRelease: "2013",
+                producer: "Brain's Base"
+            }
+        ]
+    },
+    {
+        name: "Anime movies by Hayao Miyazaki and Studio Ghibli",
+        answer: [
+            {
+                id: 5,
+                name: "Spirited Away",
+                author: "Hayao Miyazaki",
+                dateOfRelease: "2001",
+                producer: "Studio Ghibli"
+            },
+            {
+                id: 6,
+                name: "My Neighbor Totoro",
+                author: "Hayao Miyazaki",
+                dateOfRelease: "1988",
+                producer: "Studio Ghibli"
+            },
+            {
+                id: 7,
+                name: "Princess Mononoke",
+                author: "Hayao Miyazaki",
+                dateOfRelease: "1997",
+                producer: "Studio Ghibli"
+            },
+            {
+                id: 8,
+                name: "Howl's Moving Castle",
+                author: "Hayao Miyazaki",
+                dateOfRelease: "2004",
+                producer: "Studio Ghibli"
+            }
+        ]
+    },
+    {
+        name: "Isekai Animes",
+        answer: [
+            {
+                id: 9,
+                name: "Re:Zero - Starting Life in Another World",
+                author: "Tappei Nagatsuki",
+                dateOfRelease: "2016",
+                producer: "White Fox"
+            },
+            {
+                id: 10,
+                name: "No Game No Life",
+                author: "Yuu Kamiya",
+                dateOfRelease: "2014",
+                producer: "Madhouse"
+            },
+            {
+                id: 11,
+                name: "That Time I Got Reincarnated as a Slime",
+                author: "Fuse",
+                dateOfRelease: "2018",
+                producer: "8bit"
+            },
+            {
+                id: 12,
+                name: "Sword Art Online",
+                author: "Reki Kawahara",
+                dateOfRelease: "2012",
+                producer: "A-1 Pictures"
+            }
+        ]
+    },
+    {
+        name: "Animes produced by Bones",
+        answer: [
+            {
+                id: 13,
+                name: "Fullmetal Alchemist: Brotherhood",
+                author: "Hiromu Arakawa",
+                dateOfRelease: "2009",
+                producer: "Bones"
+            },
+            {
+                id: 14,
                 name: "My Hero Academia",
                 author: "Kohei Horikoshi",
                 dateOfRelease: "2016",
                 producer: "Bones"
             },
             {
-                id: 3,
-                name: "Demon Slayer",
-                author: "Koyoharu Gotouge",
-                dateOfRelease: "2019",
-                producer: "Ufotable"
-            },
-            {
-                id: 4,
-                name: "One Piece",
-                author: "Eiichiro Oda",
-                dateOfRelease: "1999",
-                producer: "Toei Animation"
-            },
-        ], 
-    },
-    {
-        name: 'Animes of the same author',
-        answer: [
-            {
-                id: 5,
-                name: "Fullmetal Alchemist: Brotherhood",
-                author: "Hiromu Arakawa",
-                dateOfRelease: "2009",
-                producer: "BONES"
-            },
-            {
-                id: 6,
-                name: "Death Note",
-                author: "Tsugumi Ohba",
-                dateOfRelease: "2006",
-                producer: "Madhouse"
-            },
-            {
-                id: 7,
-                name: "Sword Art Online",
-                author: "Reki Kawahara",
-                dateOfRelease: "2012",
-                producer: "A-1 Pictures"
-            },
-            {
-                id: 8,
-                name: "Tokyo Ghoul",
-                author: "Sui Ishida",
-                dateOfRelease: "2014",
-                producer: "Studio Pierrot"
-            },
-        ]
-    },
-    {
-        name: 'Isekai animes',
-        answer: [
-            {
-                id: 9,
-                name: "Hunter x Hunter",
-                author: "Yoshihiro Togashi",
-                dateOfRelease: "2011",
-                producer: "Madman Entertainment"
-            },
-            {
-                id: 10,
-                name: "Neon Genesis Evangelion",
-                author: "Hideaki Anno",
-                dateOfRelease: "1995",
-                producer: "Gainax"
-            },
-            {
-                id: 11,
-                name: "Paranoia Agent",
-                author: "Satoshi Kon",
-                dateOfRelease: "2004",
-                producer: "Madhouse"
-            },
-            {
-                id: 12,
-                name: "Your Lie in April",
-                author: "Naoshi Arakawa",
-                dateOfRelease: "2014",
-                producer: "A-1 Pictures"
-            },
-        ]
-    },
-    {
-        name: 'All anime movies',
-        answer: [
-            {
-                id: 13,
-                name: "The Prince of Tennis",
-                author: "Takeshi Konomi",
-                dateOfRelease: "2001",
-                producer: "Mitsubachi"
-            },
-            {
-                id: 14,
+                id: 15,
                 name: "Mob Psycho 100",
                 author: "ONE",
                 dateOfRelease: "2016",
                 producer: "Bones"
             },
             {
-                id: 15,
-                name: "Gurren Lagann",
-                author: "Kazuki Nakashima",
-                dateOfRelease: "2007",
-                producer: "Gainax"
-            },
-            {
                 id: 16,
-                name: "Monster",
-                author: "Naoki Urasawa",
-                dateOfRelease: "2004",
-                producer: "Madhouse"
-            },
-        ],
+                name: "Noragami",
+                author: "Adachitoka",
+                dateOfRelease: "2014",
+                producer: "Bones"
+            }
+        ]
     },
 ]
+
 const MOCKDATA = {
-    animeList,
     answers,
 } 
 
