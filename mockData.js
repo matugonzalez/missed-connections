@@ -1,3 +1,30 @@
+const tutorialAnswers = [
+    {
+        name: "Farm Animals",
+        answer: [
+            {
+                id: 1,
+                name: "Cow",
+                type: "Farm",
+            },
+            {
+                id: 2,
+                name: "Pig",
+                type: "Farm",
+            },
+            {
+                id: 3,
+                name: "Chicken",
+                type: "Farm",
+            },
+            {
+                id: 4,
+                name: "Horse",
+                type: "Farm",
+            },
+        ]
+    },
+]
 const answers = [
     {
         name: "Animes released on 2013",
@@ -135,6 +162,7 @@ const answers = [
 
 const MOCKDATA = {
     answers,
+    tutorialAnswers,
 } 
 
 export default MOCKDATA;

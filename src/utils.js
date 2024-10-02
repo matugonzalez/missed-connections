@@ -7,8 +7,14 @@ const verifyAnswers = (pickedITems, answers) => {
             }
         })
     })
-    if (a < 4) return false 
-    if (a === 4) return true
+    if (a < 4) return {
+        verified : false,
+        correctItems : a,
+    } 
+    if (a === 4) return {
+        verified : true,
+        correctItems : a,
+    } 
 }
 
 const shuffleArray =  (array) => {

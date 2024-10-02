@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked, setWrongAnswer}) => {
+const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked, setWrongAnswer, setCorrectItems}) => {
     const [isSelected, setIsSelected] = useState(false)
     const [showError, setShowError] = useState(false)
 
@@ -28,6 +28,7 @@ const ItemBox = ({item, pickedItems, setPickedItems, setAllItemsPicked, setWrong
         setWrongAnswer(false)
         setIsSelected(isPicked)
         setAllItemsPicked(true)
+        setCorrectItems(0)
     }, [pickedItems, item])
 
     return (

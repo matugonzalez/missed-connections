@@ -1,9 +1,9 @@
-const AttemptsLeft = ({livesLeft}) => {
+const AttemptsLeft = ({livesLeft, difficulty}) => {
     const hearts = []
     for(let i=1; i<livesLeft+1; i++){
         hearts.push('❤️')
     }
-    while (hearts.length < 5) {
+    while (hearts.length < (difficulty === 'hard' ? 3 : 5)) {
         hearts.push('☠️')
     } 
     return (
