@@ -7,8 +7,9 @@ import EndGame from "../EndGame"
 import CorrectGuesses from "../CorrectGuesses"
 import GameButtons from "../GameButtons"
 
-const Game = ({gameMode, setGameStarted}) => {
-    const selectedData = MOCKDATA.answers.flatMap(item => item.answer)
+const Game = ({gameMode, gameTopic, setGameStarted}) => {
+    const customData = MOCKDATA.ANSWERS.find((answer) => answer.name === gameTopic)
+    const selectedData = customData.answers.flatMap((item) => item.answer)
     const [colors, setColors] = useState([]) 
     const [items, setItems] = useState(UTILS.shuffleArray(selectedData))
     const [pickedItems, setPickedItems] = useState([])
@@ -18,6 +19,7 @@ const Game = ({gameMode, setGameStarted}) => {
     const [wrongAnswer, setWrongAnswer] = useState()
     const [livesLeft, setLivesLeft] = useState(gameMode === 'hard' ? 3 : 5)
     const difficulty = gameMode
+
 
     useEffect(() => {
         setColors(UTILS.getShuffledColors())
@@ -38,7 +40,7 @@ const Game = ({gameMode, setGameStarted}) => {
 
         let isCorrect = false
         let correctItems = 0
-        MOCKDATA.answers.map((answer) => {
+        customData.answers.map((answer) => {
             if (UTILS.verifyAnswers(pickedItems, answer.answer).verified) {
                 isCorrect= true
                 setCorrectGuesses([...correctGuesses, answer])
