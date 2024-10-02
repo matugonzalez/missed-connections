@@ -44,3 +44,10 @@ In JavaScript you could find various solutions to this subject:
 
 2. You can compare objects using the Lowdash library `_.isEqual()` Method
     With this method you will get the 'right' results on the test done before.
+
+## Array.flatMap()
+The `flatMap()` method of arrays returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level.
+
+For each element, it produces an array of new elements, and concatenates the resulting arrays together to form a new array.
+
+ It is identical to a `map()` followed by a `flat()` of depth 1 `(arr.map(...args).flat())`, but slightly more efficient than calling those two methods separately.
